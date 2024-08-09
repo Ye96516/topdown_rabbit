@@ -1,14 +1,14 @@
 extends Control
 
-@onready var grid_container: GridContainer = $ScrollContainer/GridContainer
+@onready var grid_container: GridContainer = $GridContainer
 
 func _ready() -> void:
-	Global.iventory_update.connect(on_inventroy_update())
+	Global.inventory_update.connect(on_inventroy_update)
 	on_inventroy_update()
 
 func on_inventroy_update():
 	clear_invenroy()
-	for item in range(Global.inventory.size()):
+	for item in Global.inventory:
 		var slot=Global.slot_scence.instantiate()
 		grid_container.add_child(slot)
 		if item!=null:

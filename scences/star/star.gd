@@ -36,6 +36,8 @@ func play_animation(direction):
 	#else:
 		#state.travel("idle")
 		
-		
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("knapsack"):
+		$InventoryUi.visible=!$InventoryUi.visible
 		
 		

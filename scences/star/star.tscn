@@ -1,7 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://bvhc1d5cxry48"]
+[gd_scene load_steps=31 format=3 uid="uid://bvhc1d5cxry48"]
 
 [ext_resource type="Texture2D" uid="uid://dvodl5v5xo633" path="res://art/star/Basic Charakter Spritesheet.png" id="1_3ruun"]
 [ext_resource type="Script" path="res://scences/star/star.gd" id="1_cavri"]
+[ext_resource type="PackedScene" uid="uid://cbk5py1fjktw" path="res://scences/iventroy_ui/inventory_ui.tscn" id="3_n2tlj"]
 
 [sub_resource type="Animation" id="Animation_erol4"]
 length = 0.001
@@ -637,7 +638,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="InventoryUi" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="InventoryUi"]
 anchors_preset = 15
@@ -659,3 +659,10 @@ theme_override_font_sizes/font_size = 37
 text = "库存"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="InventoryUI" parent="InventoryUi/ColorRect" instance=ExtResource("3_n2tlj")]
+layout_mode = 1
+offset_left = 11.0
+offset_top = 90.0
+offset_right = -16.0
+offset_bottom = -16.0

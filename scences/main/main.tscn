@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://wakd7i7i722j"]
+[gd_scene load_steps=37 format=3 uid="uid://wakd7i7i722j"]
 
 [ext_resource type="Texture2D" uid="uid://dr7c5h3qsfevx" path="res://art/tilemap/Grass.png" id="1_w214d"]
 [ext_resource type="Script" path="res://scences/main/Manager.gd" id="1_wn6hw"]
@@ -1220,6 +1220,10 @@ region = Rect2(98, 50, 13, 13)
 atlas = ExtResource("7_egdc0")
 region = Rect2(98, 50, 13, 13)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocrip"]
+atlas = ExtResource("8_p0hoi")
+region = Rect2(100, 4, 10, 11)
+
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
 
@@ -1297,6 +1301,11 @@ item_description = "没了我，你能知道几点了？"
 position = Vector2(772, 333)
 item_texture = SubResource("AtlasTexture_nh564")
 item_name = "圆形棕色边框时钟"
+
+[node name="InventoryItem3" parent="." instance=ExtResource("14_2we6b")]
+position = Vector2(833, 465)
+item_texture = SubResource("AtlasTexture_ocrip")
+item_name = "蘑菇"
 
 [connection signal="body_entered" from="Manager/InFrontOfDoor" to="Manager" method="_on_in_front_of_door_body_entered"]
 [connection signal="body_exited" from="Manager/InFrontOfDoor" to="Manager" method="_on_in_front_of_door_body_exited"]

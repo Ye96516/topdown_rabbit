@@ -22,18 +22,19 @@ func _process(delta: float) -> void:
 		icon.texture=item_texture
 	if Input.is_action_just_pressed("pick_up") and is_star_in_range:
 		pickup_item()
-		print(Global.inventory)
+		#print(Global.inventory)
 
 ##将捡拾到的物品的信息记录在字典中
 ##如果玩家存在则将字典存入全局脚本里的数组中，并清除被捡拾的物品
 func pickup_item():
-	var item:={
+	var item:Dictionary={
 		"item_name":item_name,
 		"item_type":item_type,
 		"item_effect":item_effect,
 		"item_description":item_description,
 		"item_texture":item_texture,
-		"quantity":1,
+		"item_quantity":1,
+		"scence_path":scence_path,
 	}
 	
 	if Global.star_node:
@@ -51,3 +52,10 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("star"):
 		Global.star_node.interactive_ui.visible=false
 		is_star_in_range=false
+
+
+func set_item_data(data):
+	item_type = data["item_type"]
+	item_name = data["item_name"]
+	item_effect = data["item_effect"]
+	item_texture = data["item_texture"]
