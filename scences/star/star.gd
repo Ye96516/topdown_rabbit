@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var animation_tree: AnimationTree = $AnimationTree
-@onready var state=animation_tree.get("parameters/playback")
+#@onready var state=animation_tree.get("parameters/playback")
 @onready var interactive_ui: CanvasLayer = $InteractiveUi
 
 var speed:=110

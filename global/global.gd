@@ -3,12 +3,12 @@ extends Node
 
 var inventory:Array=[]
 var star_node:Node2D
-
+#var slot_scence:String="res://scences/inventory_slot/iventory_slot.tscn"
+const slot_scence = preload("res://scences/inventory_slot/iventory_slot.tscn")
 signal iventory_update
 
 func _ready() -> void:
 	inventory.resize(30)
-
 
 func add_item(item):
 	for i in range(inventory.size()):

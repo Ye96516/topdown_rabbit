@@ -1,0 +1,173 @@
+[gd_scene load_steps=9 format=3 uid="uid://c1j50vbwkuy17"]
+
+[ext_resource type="Script" path="res://scences/inventory_slot/iventory_slot.gd" id="1_x7jhc"]
+[ext_resource type="Texture2D" uid="uid://c11s3cdh1l4dj" path="res://art/prop/Basic_Plants.png" id="1_ypssd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htufw"]
+atlas = ExtResource("1_ypssd")
+region = Rect2(82, 17, 12, 13)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d8bah"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mrhhw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vdy54"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lo22c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cjqhb"]
+
+[node name="IventorySlot" type="Control"]
+layout_mode = 3
+anchor_left = 0.021
+anchor_top = 0.037
+anchor_right = 0.333
+anchor_bottom = 0.593
+offset_left = -0.0800009
+offset_top = 0.0100002
+offset_right = 0.160004
+offset_bottom = -0.110016
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x7jhc")
+
+[node name="BottomBoard" type="ColorRect" parent="."]
+self_modulate = Color(0.756863, 1, 1, 1)
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 150.0
+
+[node name="InnerBoard" type="ColorRect" parent="."]
+self_modulate = Color(0.454902, 0.8, 0.823529, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.067
+anchor_top = 0.067
+anchor_right = 0.933
+anchor_bottom = 0.933
+offset_left = -0.0500002
+offset_top = -0.0500002
+offset_right = 0.0500031
+offset_bottom = 0.0500031
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon" type="TextureRect" parent="InnerBoard"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 36.0
+offset_top = 42.0
+offset_right = -78.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.5, 3.5)
+texture = SubResource("AtlasTexture_htufw")
+
+[node name="Quantity" type="Label" parent="InnerBoard"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_d8bah")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_mrhhw")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vdy54")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_lo22c")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cjqhb")
+
+[node name="DetailsPanel" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_top = -155.0
+offset_right = 300.0
+offset_bottom = -5.0
+color = Color(0.729412, 1, 1, 1)
+
+[node name="Name" type="Label" parent="DetailsPanel"]
+layout_mode = 0
+offset_left = 5.0
+offset_right = 53.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "名称："
+
+[node name="Type" type="Label" parent="DetailsPanel"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 25.0
+offset_right = 53.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "类型："
+
+[node name="Effect" type="Label" parent="DetailsPanel"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 50.0
+offset_right = 53.0
+offset_bottom = 73.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "作用："
+
+[node name="Description" type="Label" parent="DetailsPanel"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 73.0
+offset_right = 53.0
+offset_bottom = 96.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "描述："
+
+[node name="UsagePanel" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_top = -155.0
+offset_right = 300.0
+offset_bottom = -5.0
+color = Color(0.647059, 1, 1, 1)
+
+[node name="use" type="Button" parent="UsagePanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -130.0
+offset_top = 10.0
+offset_right = 130.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "使用"
+
+[node name="drop" type="Button" parent="UsagePanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -130.0
+offset_top = -60.0
+offset_right = 130.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "丢弃"
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
