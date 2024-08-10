@@ -563,6 +563,7 @@ advance_condition = &"is_end"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_mwsl0"]
 states/End/position = Vector2(773, 109.313)
+states/Start/position = Vector2(196, 109.109)
 states/idle/node = SubResource("AnimationNodeBlendSpace2D_6hnm7")
 states/idle/position = Vector2(368.5, 108.906)
 states/walk/node = SubResource("AnimationNodeBlendSpace2D_plafx")
@@ -638,6 +639,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="InventoryUi" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="InventoryUi"]
 anchors_preset = 15

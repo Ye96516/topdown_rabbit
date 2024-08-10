@@ -5,13 +5,17 @@ extends CharacterBody2D
 @onready var interactive_ui: CanvasLayer = $InteractiveUi
 
 var speed:=110
+var direction:Vector2
+
+
 
 func _ready():
 	Global.star_node=self
 	pass
 
 func _physics_process(_delta: float) -> void:
-	var direction:=Vector2(Input.get_action_strength("d")-Input.get_action_strength("a"),
+	Global.emit_signal("star_stop_direction",10)
+	direction=Vector2(Input.get_action_strength("d")-Input.get_action_strength("a"),
 							Input.get_action_strength("s")-Input.get_action_strength("w"))
 	play_animation(direction)
 #	change_state(direction)
@@ -23,6 +27,8 @@ func play_animation(direction):
 	if direction!=Vector2(0,0):
 		animation_tree.set("parameters/walk/blend_position",direction)
 		animation_tree.set("parameters/idle/blend_position",direction)
+		Global.dir=animation_tree.get("parameters/idle/blend_position")
+		#print(direction,"dongdong")
 		animation_tree["parameters/conditions/is_walk"]=true
 		animation_tree["parameters/conditions/is_idle"]=false
 	elif direction==Vector2(0,0):
@@ -39,5 +45,5 @@ func play_animation(direction):
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("knapsack"):
 		$InventoryUi.visible=!$InventoryUi.visible
-		
-		
+
+	
